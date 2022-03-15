@@ -13,7 +13,7 @@ router.post("/register", async (req, res) => {
     ).toString(),
   });
   try {
-    const savedUser = await newUser.save();
+    const savedUser = await newUser.save();c
     res.status(201).json(savedUser);
   } catch (err) {
     res.status(500).json(err);
@@ -35,7 +35,7 @@ router.post("/login", async (req, res) => {
 
     OriginalPassword !== req.body.password && res.status(401).json("Wrong Credentials");
 
-    const { password, ...rest} = user
+    const { password, ...rest} = user._doc
     res.status(200).json(rest);
   } catch (err) {
     res.status(500).json(err);
